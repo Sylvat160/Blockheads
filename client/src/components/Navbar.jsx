@@ -86,7 +86,6 @@ const Navbar = () => {
               >
                 <img
                   src={link.imgUrl}
-                  alt=""
                   alt={link.name}
                   className={`w-[24px] h-[24px] object-contain ${
                     isActive === link.name ? "grayscale-0" : "grayscale"
