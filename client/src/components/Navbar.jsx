@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CustomButton } from '.'
 import { logo, menu, search, thirdweb } from '../assets'
 import { navlinks } from '../constants'
-// import { useStateContext } from "../context";
+import { useStateContext } from "../context";
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -34,7 +34,8 @@ const Navbar = () => {
           title={"address" ? "Create a campaign" : "Connect"}
           styles={"address" ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
           handleClick={() => {
-            // if (address) navigate("create-campaign");
+            // if (address)
+             navigate("create-campaign");
             // else connect()
           }}
         />
