@@ -31,10 +31,17 @@ const CampaignDetails = () => {
   const handleDonate = async () => {
     setIsLoading(true);
 
-    await donate(state.pId, amount);
+    await donate(state.pId, amount).then((response) => {
 
-    navigate("/");
-    setIsLoading(false);
+      setIsLoading(false);
+      console.log(response);
+      navigate("/");
+    }).catch((error) => {
+      setIsLoading(false);
+      console.log(error);
+      alert("Something went wrong. Please try again later.");
+    });
+
   };
 
   return (
