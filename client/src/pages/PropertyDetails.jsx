@@ -7,7 +7,7 @@ import { CountBox, CustomButton, Loader } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
 import { thirdweb } from "../assets";
 
-const CampaignDetails = () => {
+const PropertyDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { donate, getDonations, contract, address } = useStateContext();
@@ -189,4 +189,4 @@ const CampaignDetails = () => {
   );
 };
 
-export default CampaignDetails;
+export default PropertyDetails;

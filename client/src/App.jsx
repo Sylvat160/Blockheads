@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { Navbar, Sidebar } from './components'
-import { Home, Profile, CreateCampaign, CampaignDetails } from './pages'
+import { Home, Profile, CreatePropertyToken, PropertyDetails } from './pages'
 import { github } from './assets'
 
 const App = () => {
@@ -17,8 +17,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/create-campaign" element={<CreateCampaign />} />
-          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
+          <Route path="/create-asset" element={<CreatePropertyToken />} />
+          <Route path="/property-details/:id" element={<PropertyDetails />} />
         </Routes>
       </div>
 

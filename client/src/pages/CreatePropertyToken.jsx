@@ -7,17 +7,17 @@ import { money } from "../assets";
 import { CustomButton, FormField } from "../components";
 import { checkIfImage } from "../utils";
 
-const CreateCampaign = () => {
+const CreatePropertyToken = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { createCampaign } = useStateContext();
   const [form, setForm] = useState({
-    name: "",
-    title: "",
-    description: "",
-    target: "",
-    deadline: "",
-    image: "",
+    propertyName: "",
+    propertyLocation: "",
+    propertyDescription: "",
+    propertyValue: "",
+    propertyBidDeadline: "",
+    propertyImage: "",
   });
 
   const handleFormFieldChange = (fieldName, e) => {
@@ -27,18 +27,16 @@ const CreateCampaign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    checkIfImage(form.image, async (exists) => {
+    checkIfImage(form.propertyImage, async (exists) => {
       if (exists) {
         setIsLoading(true);
-        await createCampaign({
-          ...form,
-          target: ethers.utils.parseUnits(form.target, 18),
-        });
+        
+        //place web3 method here
         setIsLoading(false);
         navigate("/");
       } else {
         alert("Provide valid image URL");
-        setForm({ ...form, image: "" });
+        setForm({ ...form, propertyImage: "" });
       }
     });
   };
@@ -48,7 +46,7 @@ const CreateCampaign = () => {
       {/* {isLoading && <Loader />} */}
       <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
         <h1 className="font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-white">
-          Start a Campaign
+          Generate Asset Token
         </h1>
       </div>
 
@@ -58,69 +56,58 @@ const CreateCampaign = () => {
       >
         <div className="flex flex-wrap gap-[40px]">
           <FormField
-            labelName="Your Name *"
-            placeholder="John Doe"
+            labelName="Property Name *"
+            placeholder="Blockhead Estate"
             inputType="text"
-            value={form.name}
-            handleChange={(e) => handleFormFieldChange("name", e)}
+            value={form.propertyName}
+            handleChange={(e) => handleFormFieldChange("propertyName", e)}
           />
           <FormField
-            labelName="Campaign Title *"
-            placeholder="Write a title"
+            labelName="Location *"
+            placeholder="Write Location of Asset"
             inputType="text"
-            value={form.title}
-            handleChange={(e) => handleFormFieldChange("title", e)}
+            value={form.propertyLocation}
+            handleChange={(e) => handleFormFieldChange("propertyLocation", e)}
           />
         </div>
 
         <FormField
-          labelName="Story *"
-          placeholder="Write your story"
+          labelName="Description *"
+          placeholder="Describe the state of property"
           isTextArea
-          value={form.description}
-          handleChange={(e) => handleFormFieldChange("description", e)}
+          value={form.propertyDescription}
+          handleChange={(e) => handleFormFieldChange("propertyDescription", e)}
         />
-
-        <div className="w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
-          <img
-            src={money}
-            alt="money"
-            className="w-[40px] h-[40px] object-contain"
-          />
-          <h4 className="font-epilogue font-bold text-[25px] text-white ml-[20px]">
-            You will get 100% of the raised amount
-          </h4>
-        </div>
-
         <div className="flex flex-wrap gap-[40px]">
           <FormField
-            labelName="Goal *"
-            placeholder="ETH 0.50"
+            labelName="Asset Valuation *"
+            placeholder="HBAR 90"
             inputType="text"
-            value={form.target}
-            handleChange={(e) => handleFormFieldChange("target", e)}
+            value={form.propertyValue}
+            handleChange={(e) => handleFormFieldChange("propertyValue", e)}
           />
           <FormField
             labelName="End Date *"
             placeholder="End Date"
             inputType="date"
-            value={form.deadline}
-            handleChange={(e) => handleFormFieldChange("deadline", e)}
+            value={form.propertyBidDeadline}
+            handleChange={(e) => handleFormFieldChange("propertyBidDeadline", e)}
           />
         </div>
 
         <FormField
-          labelName="Campaign image *"
-          placeholder="Place image URL of your campaign"
+          labelName="Asset Deed image *"
+          placeholder="Place image URL of your asset deed"
           inputType="url"
-          value={form.image}
-          handleChange={(e) => handleFormFieldChange("image", e)}
+          value={form.propertyImage}
+          handleChange={(e) => handleFormFieldChange("propertyImage", e)}
         />
 
         <div className="flex justify-center items-center mt-[40px]">
+
           <CustomButton
             btnType="submit"
-            title="Submit new campaign"
+            title="Tokenize Deed"
             styles="bg-[#1dc071]"
           />
         </div>
@@ -129,4 +116,4 @@ const CreateCampaign = () => {
   );
 };
 
-export default CreateCampaign;
+export default CreatePropertyToken;

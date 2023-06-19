@@ -7,7 +7,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (campaign) => {
-    navigate(`/campaign-details/${campaign.title}`, { state: campaign });
+    navigate(`/property-details/${campaign.title}`, { state: campaign });
   }
   return (
     <div>
@@ -25,7 +25,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
         )}
         {!isLoading && campaigns.length === 0 && (
           <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-            You have not created a campaign yet
+            You have not added a property yet
           </p>
         )}
 
