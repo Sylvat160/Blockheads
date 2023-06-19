@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { useStateContext } from "../context";
 import { CountBox, CustomButton, Loader } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
+import fakeStakers from "../fake-data/data";
 import { thirdweb } from "../assets";
 
 const PropertyDetails = () => {
@@ -14,34 +15,36 @@ const PropertyDetails = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
-  const [donators, setDonators] = useState([]);
+  const [stakers, setStakers] = useState(fakeStakers.fakeStakers);
 
   const remainingDays = daysLeft(state.deadline);
 
-  const fetchDonators = async () => {
-    const data = await getDonations(state.pId);
+  // const fetchStakers = async () => {
 
-    setDonators(data);
-  };
+  //   //TODO:: UNCOMMENT GET METHOD TO FETCH REAL DATA
+  //   const data = await getDonations(state.pId);
 
-  useEffect(() => {
-    if (contract) fetchDonators();
-  }, [contract, address]);
+  //   setStakers(data);
+  // };
+
+  // useEffect(() => {
+  //   if (contract) fetchStakersFake();
+  // }, [contract, address]);
 
   const handleDonate = async () => {
     setIsLoading(true);
 
-    await donate(state.pId, amount).then((response) => {
-
-      setIsLoading(false);
-      console.log(response);
-      navigate("/");
-    }).catch((error) => {
-      setIsLoading(false);
-      console.log(error);
-      alert("Something went wrong. Please try again later.");
-    });
-
+    await donate(state.pId, amount)
+      .then((response) => {
+        setIsLoading(false);
+        console.log(response);
+        navigate("/");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+        alert("Something went wrong. Please try again later.");
+      });
   };
 
   return (
@@ -75,7 +78,7 @@ const PropertyDetails = () => {
             title={`Raised of ${state.target}`}
             value={state.amountCollected}
           />
-          <CountBox title="Total Backers" value={donators.length} />
+          <CountBox title="Total Stakers" value={stakers.length} />
         </div>
       </div>
 
@@ -83,7 +86,7 @@ const PropertyDetails = () => {
         <div className="flex-[2] flex flex-col gap-[40px]">
           <div>
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
-              Creator
+              Asset Owner
             </h4>
 
             <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
@@ -99,7 +102,7 @@ const PropertyDetails = () => {
                   {state.owner}
                 </h4>
                 <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">
-                  10 Campaigns
+                  Assets owned
                 </p>
               </div>
             </div>
@@ -107,7 +110,7 @@ const PropertyDetails = () => {
 
           <div>
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
-              Story
+              Asset State Description
             </h4>
 
             <div className="mt-[20px]">
@@ -119,21 +122,34 @@ const PropertyDetails = () => {
 
           <div>
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
-              Donators
+              Stakers
             </h4>
 
             <div className="mt-[20px] flex flex-col gap-4">
-              {donators.length > 0 ? (
-                donators.map((item, index) => (
+              {stakers.length > 0 ? (
+                stakers.map((item, index) => (
                   <div
-                    key={`${item.donator}-${index}`}
-                    className="flex justify-between items-center gap-4"
+                    key={`${item.name}-${index}`}
+                    className="flex flex-start items-center content-center space-x-8 items-center"
                   >
                     <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd] leading-[26px] break-ll">
-                      {index + 1}. {item.donator}
+                      {index + 1}.
                     </p>
-                    <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
-                      {item.donation}
+                    <img
+                      src={item.image}
+                      alt="campaign"
+                      className="w-[40px] h-[40px] object-cover rounded-[5px]"
+                    />
+                    <div className="flex flex-col justify-evenly">
+                      <p className="font-epilogue font-semibold text-[18px] text-[#b2b3bd] leading-[26px] break-ll">
+                        {item.name}
+                      </p>
+                      <p className="font-epilogue font-light text-[14px] text-[#b2b3bd] leading-[26px] break-ll">
+                        {item.address}
+                      </p>
+                    </div>
+                    <p className="font-epilogue font-semibold text-[18px] text-[#808191] leading-[26px] break-ll">
+                      {item.stakedAmount}
                     </p>
                   </div>
                 ))
