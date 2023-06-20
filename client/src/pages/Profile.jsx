@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { DisplayCampaigns } from "../components";
+import { DisplayProperties } from "../components";
 import { useStateContext } from "../context";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
 
   const { address, contract, getUserCampaigns } = useStateContext();
 
-  const fetchCampaigns = async () => {
+  const fetchProperties = async () => {
     setIsLoading(true);
     const data = await getUserCampaigns();
     setCampaigns(data);
@@ -17,14 +17,14 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    if (contract) fetchCampaigns();
+    if (contract) fetchProperties();
   }, [address, contract]);
 
   return (
-    <DisplayCampaigns
-      title="Your Campaigns"
+    <DisplayProperties
+      title="Your Properties"
       isLoading={isLoading}
-      campaigns={campaigns}
+      properties={campaigns}
     />
   );
 };
