@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [isActive, setIsActive] = useState('dashboard')
   const [toggleDrawer, setToggleDrawer] = useState(false)
-  const { setAddress } = useStateContext();
+  const { setAddress, setGlobalWData } = useStateContext();
 
   //
   const [walletData, setWalletData] = useState();
@@ -23,6 +23,8 @@ const Navbar = () => {
       console.log(`🔌 Account ${account} already connected ⚡ ✅`);
     } else {
       const wData = await walletConnectFcn();
+      console.log("wData____________________");
+      console.log(wData);
 
       let newAccount = wData[0];
       let newNetwork = wData[2];
@@ -33,13 +35,10 @@ const Navbar = () => {
         // );
 
         setWalletData(wData);
+        setGlobalWData(wData);
         setAddress(newAccount);
         setAccount(newAccount);
         setNetwork(newNetwork);
-
-        console.log("walletData: ", walletData);
-        console.log("account: ", account);
-        console.log("network: ", network);
       }
     }
   }

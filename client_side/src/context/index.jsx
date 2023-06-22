@@ -1,5 +1,11 @@
+import { ethers } from "ethers";
 import React, { useContext, createContext, useState, useEffect } from "react";
+import json from "../hedera/BusinessLogic.json"
+import { contractKyc, deploying } from "../hedera";
 
+
+const { abi } = json;
+const contractAdress = "0x0000000000000000000000000000000000e29081";
 // import {
 //   useAddress,
 //   useContract,
@@ -15,30 +21,50 @@ export const StateContextProvider = ({ children }) => {
   // const { contract } = useContract(
   //   "0x30D7852Dcd436E385fFdA0e21bF10f63f7e5aEa8"
   // );
-  const contract = null;
+  // Request access to the user's MetaMask account
+  
   const createCampaign = null;
+  const [address, setAddress] = useState(null);
+  const [globalWData, setGlobalWData] = useState([]);
   // const { mutateAsync: createCampaign } = useContractWrite(
   //   contract,
   //   "createCampaign"
   // );
 
-  const [address , setAddress] = useState(null);
   // const connect = useMetamask();
 
-  
+  useEffect(() => {
+    console.log("globalWData____________________");
+    console.log(globalWData);
+  }, [globalWData])
+
+  const makeKyc = async (name, email, phone, address, city, country) => {
+     await contractKyc(
+        name,
+        email,
+        phone,
+        address,
+        city,
+        country,
+        globalWData
+      );
+
+  };
 
   const connect = null;
 
   const publishCampaign = async (form) => {
     try {
-      const data = await createCampaign({ args : [
-        address, // owner
-        form.title, // title
-        form.description, // description
-        form.target,
-        new Date(form.deadline).getTime(), // deadline,
-        form.image,
-      ]});
+      const data = await createCampaign({
+        args: [
+          address, // owner
+          form.title, // title
+          form.description, // description
+          form.target,
+          new Date(form.deadline).getTime(), // deadline,
+          form.image,
+        ],
+      });
 
       console.log("contract call success", data);
     } catch (error) {
@@ -99,18 +125,20 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   };
 
+  const deployC = async () => {
+
+    await deploying(globalWData);
+  }
+
   return (
     <StateContext.Provider
       value={{
         address,
-        contract,
         connect,
         setAddress,
-        createCampaign: publishCampaign,
-        getCampaigns,
-        getUserCampaigns,
-        donate,
-        getDonations,
+        makeKyc,
+        setGlobalWData,
+        deployC
       }}
     >
       {children}

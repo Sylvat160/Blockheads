@@ -53,6 +53,9 @@ const walletConnectFcn = async () => {
 			return;
 		});
 
+		console.log(`provider _____________________` );
+		console.log(provider);
+
 	return [selectedAccount, provider, network];
 }
 
