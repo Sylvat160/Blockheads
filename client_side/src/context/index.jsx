@@ -1,4 +1,4 @@
-import React, { useContext, createContext } from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
 
 // import {
 //   useAddress,
@@ -22,10 +22,11 @@ export const StateContextProvider = ({ children }) => {
   //   "createCampaign"
   // );
 
-  // const address = useAddress();
+  const [address , setAddress] = useState(null);
   // const connect = useMetamask();
 
-  const address = null;
+  
+
   const connect = null;
 
   const publishCampaign = async (form) => {
@@ -104,6 +105,7 @@ export const StateContextProvider = ({ children }) => {
         address,
         contract,
         connect,
+        setAddress,
         createCampaign: publishCampaign,
         getCampaigns,
         getUserCampaigns,

@@ -12,7 +12,7 @@
   "dependencies": {
     "@hashgraph/sdk": "^2.27.0",
     "axios": "^1.4.0",
-    "ethers": "^6.6.0",
+    "ethers": "^5.7.2",
     "iconv-lite": "^0.6.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
