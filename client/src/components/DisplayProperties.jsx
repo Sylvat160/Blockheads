@@ -9,6 +9,7 @@ const DisplayProperties = ({ title, isLoading, properties }) => {
   const handleNavigate = (campaign) => {
     navigate(`/property-details/${campaign.title}`, { state: campaign });
   }
+  
   return (
     <div>
       <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">
