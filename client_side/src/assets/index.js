@@ -11,6 +11,7 @@ import search from './search.svg';
 import menu from './menu.svg';
 import money from './money.svg';
 import loader from './loader.svg';
+import editUser from "./user-check.svg";
 import thirdweb from './thirdweb.png';
 import github from './github.png';
 
@@ -28,6 +29,7 @@ export {
   menu,
   money,
   loader,
+  editUser,
   thirdweb,
   github
 };

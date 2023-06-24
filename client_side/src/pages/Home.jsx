@@ -7,17 +7,19 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [properties, setProperties] = useState([]);
 
-  const { address, contract, getCampaigns } = useStateContext();
+  const { address, contract, getFakeProperties } = useStateContext();
 
   const fetchAllProperties = async () => {
     setIsLoading(true);
-    const data = await getCampaigns();
+    // const data = await getCampaigns();
+    const data = await getFakeProperties();
     setProperties(data);
     setIsLoading(false);
   }
 
   useEffect(() => {
-    if (contract) fetchAllProperties();
+    // if (contract) fetchAllProperties();
+    fetchAllProperties();
   }, [address, contract]);
 
   return (
