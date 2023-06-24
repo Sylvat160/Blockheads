@@ -72,8 +72,8 @@ export default {
       index: 2,
       owner: "0x370876a61e37441e3eb641cd3E529AB61c21529e",
       address: "0x370876a61e37441e3eb641cd3E529AB61c215299",
-      name: "TokenHive Farm",
-      location: "Zimbabwe, chivhu",
+      name: "Mutare Estate",
+      location: "Zimbabwe, mutare",
       description:
         "This 10-hectare farm in Zimbabwe is a lush oasis of greenery, with fields of maize, wheat, and sorghum stretching out as far as the eye can see. The farm also features a small orchard of fruit trees, a vegetable garden, and a few livestock pens for chickens and goats. A simple farmhouse and a few outbuildings complete the picture, making this a peaceful and productive haven in the heart of Zimbabwe's beautiful countryside.",
       value: "100 HBAr",
