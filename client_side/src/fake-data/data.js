@@ -34,7 +34,7 @@ export default {
       propertyLocation: "Zimbabwe, chivhu",
       propertyDescription:
         "This 10-hectare farm in Zimbabwe is a lush oasis of greenery, with fields of maize, wheat, and sorghum stretching out as far as the eye can see. The farm also features a small orchard of fruit trees, a vegetable garden, and a few livestock pens for chickens and goats. A simple farmhouse and a few outbuildings complete the picture, making this a peaceful and productive haven in the heart of Zimbabwe's beautiful countryside.",
-      propertyValue: "100 HBAr",
+      propertyValue: "100 HBAR",
       propertyAmountCollected: "10 hh",
       propertyBidDeadline: futureDate,
       propertyImage:
@@ -46,7 +46,7 @@ export default {
       propertyLocation: "Zimbabwe, mutare",
       propertyDescription:
         "This 500 square meter estate in Zimbabwe is a compact yet luxurious retreat, with a beautifully landscaped garden surrounding a spacious and modern home. Inside, high ceilings, large windows, and elegant finishes create an airy and inviting atmosphere. The estate also boasts a swimming pool, outdoor entertaining area, and a garage for two cars.",
-      propertyValue: "120 HBAr",
+      propertyValue: "120 HBAR",
       propertyAmountCollected: "100 hh",
       propertyBidDeadline: futureDate,
       propertyImage:
