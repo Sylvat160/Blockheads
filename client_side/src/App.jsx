@@ -28,11 +28,11 @@ const App = () => {
       <div className="text-gray-400 absolute bottom-0 right-0 p-4 flex justify-center content-center mt-2">
         Made & custom By
         <a
-          href="https://portfolio-sylvat160.vercel.app/"
+          href="https://tokenhive.vercel.app/"
           target='_blank'
           className="text-[#1dc071] pl-1 pr-1"
         >
-          Sylvain
+          The Blockheads
         </a>
         <a href="https://github.com/Sylvat160" target='_blank'>
           <img src={github} width="25" alt="github" />
