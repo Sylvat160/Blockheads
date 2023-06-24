@@ -34,7 +34,7 @@ const App = () => {
         >
           The Blockheads
         </a>
-        <a href="https://github.com/Sylvat160" target='_blank'>
+        <a href="https://github.com/Sylvat160/Blockheads.git" target='_blank'>
           <img src={github} width="25" alt="github" />
         </a>
       </div>
