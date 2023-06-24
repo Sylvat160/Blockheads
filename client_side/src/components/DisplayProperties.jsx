@@ -33,7 +33,7 @@ const DisplayProperties = ({ title, isLoading, properties }) => {
           properties.length > 0 &&
           properties.map((campaign) => (
             <FundCard
-              key={campaign.id}
+              key={campaign.pId}
               {...campaign}
               handleClick={() => handleNavigate(campaign)}
             />

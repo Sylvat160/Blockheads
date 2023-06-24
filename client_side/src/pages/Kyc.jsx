@@ -19,6 +19,7 @@ const Kyc = () => {
     address1: "",
     city: "",
     country: "",
+    identityCard: ""
   });
 
   const handleFormFieldChange = (fieldName, e) => {
@@ -37,7 +38,8 @@ const Kyc = () => {
       form.phone,
       form.address1,
       form.city,
-      form.country
+      form.country,
+      form.identityCard
     );
     setIsLoading(false);
     // navigate("/");
@@ -104,6 +106,15 @@ const Kyc = () => {
             inputType="text"
             value={form.country}
             handleChange={(e) => handleFormFieldChange("country", e)}
+          />
+        </div>
+        <div className="flex flex-wrap gap-[40px]">
+          <FormField
+            labelName="Identity Card/ Passport"
+            placeholder="ID Image"
+            inputType="file"
+            value={form.identityCard}
+            handleChange={(e) => handleFormFieldChange("identityCard", e)}
           />
         </div>
 

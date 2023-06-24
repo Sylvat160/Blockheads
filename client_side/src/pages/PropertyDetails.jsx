@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { useStateContext } from "../context";
 import { CountBox, CustomButton, Loader } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
-// import fakeStakers from "../fake-data/data";
+import fakeData from "../fake-data/data";
 import { thirdweb } from "../assets";
 
 const PropertyDetails = () => {
@@ -15,10 +15,11 @@ const PropertyDetails = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
-  // const [stakers, setStakers] = useState(fakeStakers.fakeStakers);
+  const [stakers, setStakers] = useState(fakeData.fakeStakers);
 
   const remainingDays = daysLeft(state.deadline);
-
+  console.log(remainingDays);
+ 
   // const fetchStakers = async () => {
 
   //   //TODO:: UNCOMMENT GET METHOD TO FETCH REAL DATA

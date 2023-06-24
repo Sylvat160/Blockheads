@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { Navbar, Sidebar } from './components'
-import { Home, Profile, CreatePropertyToken, PropertyDetails, Kyc } from './pages'
+import { Home, Profile, CreatePropertyToken, PropertyDetails, Kyc, Notifications } from './pages'
 import { github } from './assets'
 
 const App = () => {
@@ -19,7 +19,9 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/create-asset" element={<CreatePropertyToken />} />
           <Route path="/kyc" element={<Kyc />} />
+          <Route path='/notifications' element={<Notifications />} />
           <Route path="/property-details/:id" element={<PropertyDetails />} />
+          
         </Routes>
       </div>
 

@@ -63,7 +63,7 @@ const Navbar = () => {
       <div className="sm:flex hidden flex-row justify-end gap-4">
         <CustomButton
           btnType="button"
-          title={account ? "Add Property" : "Connect"}
+          title={account ? "Add Property" : "Connect Wallet"}
           styles={account ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
           handleClick={() => {
             if (account) navigate("create-asset");
@@ -90,7 +90,6 @@ const Navbar = () => {
             className="w-[60%] h-[60%] object-contain"
           />
         </div>
-
         <img
           src={menu}
           alt="menu"

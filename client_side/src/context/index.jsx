@@ -3,6 +3,8 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 import json from "../hedera/BusinessLogic.json"
 import { contractKyc, deploying } from "../hedera";
 
+//TODO:: DELETE THIS AFTER PRESENTATION
+import fakeData from "../fake-data/data";
 
 const { abi } = json;
 const contractAdress = "0x0000000000000000000000000000000000e29081";
@@ -87,9 +89,27 @@ export const StateContextProvider = ({ children }) => {
       image: campaign.image,
       pId: i,
     }));
-
     return parsedCampaings;
   };
+
+  //TODO:: DELETE METHOD AFTER PRESENTATION
+  const getFakeProperties = async () => {
+    const parsedCampaings = fakeData.fakeAssets.map((property, i) => ({
+      owner: property.propertyOwner,
+      title: property.propertyName,
+      description: property.propertyDescription,
+      target: property.propertyValue,
+      deadline: property.propertyBidDeadline,
+      amountCollected: property.propertyAmountCollected,
+      image: property.propertyImage,
+      pId: i+1
+    }));
+
+    console.log(parsedCampaings);
+
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    return parsedCampaings;
+  }
 
   const getUserCampaigns = async () => {
     const allCampaigns = await getCampaigns();
@@ -138,7 +158,8 @@ export const StateContextProvider = ({ children }) => {
         setAddress,
         makeKyc,
         setGlobalWData,
-        deployC
+        deployC,
+        getFakeProperties //TODO::DELETE THIS AFTER PRESENTATION
       }}
     >
       {children}
