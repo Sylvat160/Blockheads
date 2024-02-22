@@ -1,9 +1,4 @@
 
-var today = new Date(); // get today's date
-var futureDate = new Date(today.getTime() + (3 * 24 * 60 * 60 * 1000)); // add three days to today's date
-
-
-
 export default {
 
   fakeStakers: [
@@ -26,6 +21,7 @@ export default {
       image: "https://v2.cimg.co/news/88192/221496/dao-crypto.jpg",
     },
   ],
+
 
   fakeAssets: [
     {
@@ -83,4 +79,5 @@ export default {
         "https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFybXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
     },
   ],
+
 };

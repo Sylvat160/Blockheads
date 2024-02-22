@@ -8,13 +8,14 @@ const DisplayProperties = ({ title, isLoading, properties }) => {
 
   const handleNavigate = (campaign) => {
     navigate(`/property-details/${campaign.title}`, { state: campaign });
-  }
+  };
   return (
     <div>
-      <h1 className="font-epilogue font-semibold text-[18px] text-white text-left">
-        {title} ({properties.length})
-      </h1>
-
+      <div className="flex flex-start my-2 py-4 rounded-md">
+        <h1 className="font-epilogue font-semibold text-[18px] text-white text-left ">
+          {title} ({properties.length})
+        </h1>
+      </div>
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
         {isLoading && (
           <img
